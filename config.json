@@ -1,0 +1,12 @@
+
+
+{
+    "PATH" : "http://localhost:3002/" ,
+
+    "add user" : "users/add_user",
+    "get user" : "users/get_user?user_name=",
+    "add_friend" : "users/add_friend",
+    "delete_all_users" : "admin/delete_all_users"
+
+}
+
