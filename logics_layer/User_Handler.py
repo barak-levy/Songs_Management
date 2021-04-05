@@ -24,6 +24,7 @@ def get_user(user_name):
     message=""
     if "error" in data_response:
         message=data_response["error"]
+        return response,None,message
     return response,data_response["data"],message
 
 
@@ -40,7 +41,18 @@ def add_friend(user_name,user_password, friend_name):
    #print(user_friends_list["friends"])
     return response
 
+def add_playlist(user_name,user_password,playlist_name):
+    d = {
+        "user_name": user_name,
+        "user_password": user_password,
+        "playlist_name": playlist_name
+    }
 
-#print(add_friend("Barak","1010","Paz Davidov"))
-#print(get_user("Barak"))
-#print(config["PATH"])
+    print(d)
+    response = RestSender.send_post_message(data["PATH"] + data["add playlist"], d)
+    playListName_return = d["playlist_name"]
+
+    return response, playListName_return
+
+
+#def get_playlistuser_name,user_password,playlist_name):
