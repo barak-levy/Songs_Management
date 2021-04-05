@@ -41,6 +41,3 @@ def test_add_functions_without_pass():
 def test_add_same_username():
     r, user_added = add_user("Barak", "1010")
     assert not response_ok(r), r.json()["error"]
-
-def test_add_song():
-    r,song_added

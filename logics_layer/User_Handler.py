@@ -19,7 +19,7 @@ def add_user(user_name, user_password):
     return response, userName_return
 
 def get_user(user_name):
-    response =RestSender.send_get_message(data["PATH"]+ data["get user"]+user_name)
+    response =RestSender.send_get_message(data["PATH"]+ data["get user"]+ "?"+ "user_name=" +user_name)
     data_response =response.json()
     message=""
     if "error" in data_response:
