@@ -26,3 +26,29 @@ def get_song_from_db(song_title):
     response = RestSender.send_get_message(data["PATH"] + data["get song from DB"]+ "?"+ "song_title=" +song_title)
     song_return =song_title
     return response,song_return
+
+
+def song_upvote(user_name,user_password ,playlist_name,song_title):
+    d={
+        "user_name": user_name,
+        "user_password" : user_password,
+        "playlist_name" : playlist_name,
+        "song_title" : song_title
+
+    }
+    response= RestSender.send_put_message(data["PATH"]+data["song upvote"],d)
+    return response
+
+def song_downvote(user_name,user_password ,playlist_name,song_title):
+    d={
+        "user_name": user_name,
+        "user_password" : user_password,
+        "playlist_name" : playlist_name,
+        "song_title" : song_title
+
+    }
+    response= RestSender.send_put_message(data["PATH"]+data["song downvote"],d)
+    return response
+
+
+

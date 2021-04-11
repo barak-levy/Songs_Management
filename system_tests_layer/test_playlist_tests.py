@@ -22,9 +22,12 @@ def test_add_song_to_PL():
     user_name="Barak"
     user_password="1010"
     Playlist_name="BPlay"
-    song_title="Kaktus"
+    song_title="Millioners6"
     r,song_added=add_song_to_PL(user_name ,user_password, Playlist_name, song_title)
     assert response_ok(r), r.json()["error"]
     r, user_recived, message = get_user("Barak")
     assert response_ok(r), r.json()["error"]
-    assert song_added in user_recived.get("playlists")[Playlist_name], "Song not been added"
+    playlistToCheck=get_playlist(user_name,user_password,Playlist_name)
+    assert check_playlist(playlistToCheck, song_title), "Song not been added"
+
+

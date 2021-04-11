@@ -14,8 +14,10 @@
     "get song from DB" : "songs/get_song",
 
 
-    "delete_all_users" : "admin/delete_all_users"
-
+    "delete_all_users" : "admin/delete_all_users",
+    "song upvote" : "songs/upvote",
+    "song downvote" : "songs/downvote",
+    "get playlist" : "users/get_playlist"
 
 }
 

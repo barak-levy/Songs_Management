@@ -41,3 +41,17 @@ def test_add_functions_without_pass():
 def test_add_same_username():
     r, user_added = add_user("Barak", "1010")
     assert not response_ok(r), r.json()["error"]
+
+def test_same_playlist_two_users():
+    add_user("Paz Davidov","1010")
+
+    r, playlist_added = add_playlist("Paz Davidov", "1010", "playlist")
+    assert response_ok(r), r.json()["error"]
+    r, user_recived, message = get_user("Paz Davidov")
+    assert playlist_added in user_recived.get("playlists")
+    r, playlist_added = add_playlist("Barak", "1010", "playlist")
+    assert response_ok(r), r.json()["error"]
+    r, user_recived, message = get_user("Barak")
+    assert playlist_added in user_recived.get("playlists")
+
+
