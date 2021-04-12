@@ -18,18 +18,31 @@ def test_add_song_to_DB(clearUsersDB, clearSongsDB):
     assert song_rank==0,"song rate is not 0"
 
 
-def test_song_upvote(clearUsersDB, clearSongsDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+#add test that adds same song to db
+def test_add_same_name_song_to_DB(clearSongsDB,clearUsersDB,add_users_and_songs):
+    song_genre2 = "Mid"
+    song_year2 = "2021"
+    song_performer2 = "Omer Adam2"
+    song_title2 = "Millionaires19"
+
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    r, song_added = add_song_to_DB(song_genre2, song_year2, song_performer2, song_title2)
+    assert not response_ok(r), r.json()["error"]
+
+
+
+def test_song_upvote(clearUsersDB, clearSongsDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
     song_title = "Millionaires19"
 
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
 
@@ -41,18 +54,18 @@ def test_song_upvote(clearUsersDB, clearSongsDB):
     assert get_song_rank(song_title, playlist) - 1 == first_rating
 
 
-def test_song_downvote(clearUsersDB, clearSongsDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_song_downvote(clearUsersDB, clearSongsDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
     song_title = "Millionaires19"
 
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
 
@@ -66,18 +79,18 @@ def test_song_downvote(clearUsersDB, clearSongsDB):
 
 
 # There is a bug in the system. the system let the user vote twice.
-def test_vote_twice(clearUsersDB, clearSongsDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_vote_twice(clearUsersDB, clearSongsDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
     song_title = "Millionaires19"
 
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
 
@@ -90,10 +103,10 @@ def test_vote_twice(clearUsersDB, clearSongsDB):
     assert not get_song_rank(song_title, playlist) - 1 == first_rating
 
 
-def test_get_songs_greater_than(clearSongsDB, clearUsersDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_get_songs_greater_than(clearSongsDB, clearUsersDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
@@ -101,8 +114,8 @@ def test_get_songs_greater_than(clearSongsDB, clearUsersDB):
     rank = '1'
     op = "greater"
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
     r = song_upvote(user_name, user_password, playlist_name, song_title)
@@ -113,10 +126,10 @@ def test_get_songs_greater_than(clearSongsDB, clearUsersDB):
     assert check_ranks_of_songs(songs, rank, op)
 
 
-def test_get_songs_less_than(clearSongsDB, clearUsersDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_get_songs_less_than(clearSongsDB, clearUsersDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
@@ -124,8 +137,8 @@ def test_get_songs_less_than(clearSongsDB, clearUsersDB):
     rank = '1'
     op = "less"
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
 
@@ -133,19 +146,21 @@ def test_get_songs_less_than(clearSongsDB, clearUsersDB):
     assert response_ok(r), r.json("error")
     assert check_ranks_of_songs(songs, rank, op)
 
-def test_get_songs_equal_to(clearSongsDB,clearUsersDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_get_songs_equal_to(clearSongsDB,clearUsersDB,add_users_and_songs):
+
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
     song_title = "Millionaires19"
+
     rank = '1'
     op = "eq"
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
     r = song_upvote(user_name, user_password, playlist_name, song_title)
@@ -154,10 +169,10 @@ def test_get_songs_equal_to(clearSongsDB,clearUsersDB):
     assert response_ok(r),r.json("error")
     assert check_ranks_of_songs(songs,rank,op)
 
-def test_songs_rate_less_than_0(clearSongsDB,clearUsersDB):
-    song_genre = "Mid"
-    song_year = "2021"
-    song_performer = "Omer Adam"
+def test_songs_rate_less_than_0(clearSongsDB,clearUsersDB,add_users_and_songs):
+    #song_genre = "Mid"
+    #song_year = "2021"
+    #song_performer = "Omer Adam"
     user_name = "Barak"
     user_password = "1010"
     playlist_name = "BPlay"
@@ -165,8 +180,8 @@ def test_songs_rate_less_than_0(clearSongsDB,clearUsersDB):
     rank = '0'
     op = "less"
     # set conditions
-    r, user_added = add_user(user_name, user_password)
-    r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
+    #r, user_added = add_user(user_name, user_password)
+    #r, song_added = add_song_to_DB(song_genre, song_year, song_performer, song_title)
     r, playlist_added = add_playlist(user_name, user_password, playlist_name)
     r, song_added = add_song_to_PL(user_name, user_password, playlist_name, song_title)
     r, songs = get_songs_by_rank(rank, op)
