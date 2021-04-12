@@ -1,11 +1,6 @@
 from instrafucture_layer import RestSender
 import json
-
-
-with open(r"C:\Users\barakl1\Songs_Management/config.json", "r") as jsonfile:
-    data = json.load(jsonfile)
-    print("Read successful")
-
+from config_reader import data
 
 def add_song_to_PL(user_name ,user_password, Playlist_name, song_title):
     d={

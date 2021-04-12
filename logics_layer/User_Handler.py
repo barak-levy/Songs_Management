@@ -1,10 +1,8 @@
 from instrafucture_layer import RestSender
 import json
+from config_reader import data
 
 
-with open(r"C:\Users\barakl1\Songs_Management/config.json", "r") as jsonfile:
-    data = json.load(jsonfile)
-    print("Read successful")
 
 
 def add_user(user_name, user_password):

@@ -5,10 +5,11 @@ from logics_layer.User_Handler import *
 from logics_layer.Responses_Handler import   *
 from logics_layer.Playlist_Handler import   *
 from logics_layer.Songs_Handler import *
+import json
+from config_reader import data
 
 
-with open(r"C:\Users\barakl1\Songs_Management/config.json", "r") as jsonfile:
-    data = json.load(jsonfile)
+
 
 @pytest.fixture()
 def clearUsersDB():
