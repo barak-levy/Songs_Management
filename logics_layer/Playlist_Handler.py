@@ -21,6 +21,8 @@ def add_song_to_PL(user_name ,user_password, Playlist_name, song_title):
     return response, song_return
 
 
+#THERE IS NOT DELETE SONG FROM PL IN THE ICD
+
 def get_playlist(user_name,user_password ,playlist_name):
     d={
         "user_name" : user_name,

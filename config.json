@@ -6,18 +6,25 @@
     "get user" : "users/get_user",
     "add_friend" : "users/add_friend",
     "add playlist": "users/add_playlist",
+    "Change users password" : "users/change_password",
 
     "Add song to playlist" : "playlists/add_song",
+    "get playlist" : "users/get_playlist",
 
 
     "add song to DB" : "songs/add_song",
     "get song from DB" : "songs/get_song",
-
-
-    "delete_all_users" : "admin/delete_all_users",
     "song upvote" : "songs/upvote",
     "song downvote" : "songs/downvote",
-    "get playlist" : "users/get_playlist"
+    "Get song by rank" : "songs/ranked_songs",
+
+    "delete_all_users" : "admin/delete_all_users",
+    "Delete all songs" : "admin/delete_all_songs",
+    "Set songs into the db" : "admin/set_songs",
+    "Set users into the db" : "admin/set_users"
+
+
+
 
 }
 

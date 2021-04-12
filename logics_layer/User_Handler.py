@@ -55,5 +55,12 @@ def add_playlist(user_name,user_password,playlist_name):
     return response, playListName_return
 
 
+def change_user_password(user_name,user_password,user_new_password):
+    d={
+        "user_name" : user_name,
+        "user_password" : user_password,
+        "user_new_password" : user_new_password
+    }
 
-
+    response=RestSender.send_put_message(data["PATH"] + data["Change users password"],d)
+    return response
